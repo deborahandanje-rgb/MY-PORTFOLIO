@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <meta name="description" content="Portfolio of Deborah Andanje, Community Development Professional, Creative Designer, Web Developer, and Entrepreneur based in Kenya.">
+    
+    <meta property="og:title"
+    content="Deborah Andanje Portfolio">
+
+    <meta property="og:image"
+    content="images/portfolio-preview.jpg">
+
+    <meta property="og:description"
+    content="Community Development • Web Development • Creative Design">
+
+    <meta property="og:type"
+    content="website">
+    
+    <title>Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <header class="contact-hero">
+      <nav class="navbar">
+        <button class="nav-toggle" aria-label="Toggle navigation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <ul class="nav-links">
+          <li><a href="index.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Projects & Ventures</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <h1 class="logo-text">Contact Me</h1>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+
+      <section class="hero hero-contact reveal">
+        <h1>Let's Connect</h1>
+        <p class="hero-tagline">Technology. Creativity. Community.</p>
+
+        <p>
+          Whether you're interested in collaborating on a project, seeking my
+          professional services, or learning more about my work, I'd love to
+          hear from you.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="services.html" class="cta-button"> Explore My Services </a>
+        </div>
+      </section>
+
+      <section class="reveal card">
+        <h2>What Can I Help You With?</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <i class="fa-solid fa-laptop-code"></i>
+
+            <h3>Web Development</h3>
+
+            <p>Responsive portfolio and business websites.</p>
+          </article>
+
+          <article class="project-card">
+            <i class="fa-solid fa-users"></i>
+
+            <h3>Project Support</h3>
+
+            <p>Social impact project planning and implementation.</p>
+          </article>
+
+          <article class="project-card">
+            <i class="fa-solid fa-palette"></i>
+
+            <h3>Creative Design</h3>
+
+            <p>Branding, illustrations and digital designs.</p>
+          </article>
+        </div>
+      </section>
+      <!-- Contact Information -->
+      <section class="contact-reveal">
+        <h2>Get In Touch</h2>
+
+        <section class="card">
+          <h2>Interested In?</h2>
+
+          <div class="skills-container">
+            <span class="skill-badge"> Sauti Salama</span>
+
+            <span class="skill-badge"> 30Nine Visuals</span>
+
+            <span class="skill-badge"> Web Development</span>
+
+            <span class="skill-badge"> Project Support</span>
+
+            <span class="skill-badge"> Creative Design</span>
+
+            <span class="skill-badge"> Social Innovation </span>
+          </div>
+        </section>
+
+        <form action="#" method="post">
+          <!-- Personal Information -->
+
+          <fieldset>
+            <legend>Your Information</legend>
+
+            <label for="full-name">
+              <i class="fa-solid fa-user"></i>
+              Full Name *</label
+            >
+            <input type="text" id="full-name" name="full-name" required />
+
+            <label for="email">
+              <i class="fa-solid fa-envelope"></i>
+              Email Address *</label
+            >
+            <input type="email" id="email" name="email" required />
+
+            <label for="phone">
+              <i class="fa-solid fa-phone"></i>
+              Phone Number</label
+            >
+            <input type="tel" id="phone" name="phone" />
+          </fieldset>
+
+          <!-- Reason for Contact -->
+
+          <fieldset>
+            <legend>How Can I Help You?</legend>
+
+            <label for="interest">
+              <i class="fa-solid fa-comment"></i>
+              What would you like to discuss?
+            </label>
+
+            <select id="interest" name="interest" required>
+              <option value="">--Please Select--</option>
+
+              <option value="web-development">Web Development Services</option>
+
+              <option value="sauti-salama">Sauti Salama Project</option>
+
+              <option value="30nine-visuals">30Nine Visuals</option>
+
+              <option value="collaboration">Partnership / Collaboration</option>
+
+              <option value="volunteer">Volunteer Opportunities</option>
+
+              <option value="speaking">Training or Speaking Engagement</option>
+
+              <option value="other">Other Inquiry</option>
+            </select>
+
+            <label for="message">
+              <i class="fa-solid fa-comment"></i>
+              Tell Me More *
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              rows="8"
+              required
+              placeholder="Please tell me how I can help you or how you would like to get involved."
+            ></textarea>
+          </fieldset>
+
+          <!-- Form Feedback -->
+
+          <p id="form-feedback" role="alert"></p>
+
+          <!-- Submit Button -->
+
+          <button type="submit">
+            <i class="fa-solid fa-paper-plane"></i>
+            Submit
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- Call To Action -->
+
+    <section class="quote-banner reveal">
+      <div class="quote-overlay">
+        <h2>Let's Build Something Meaningful Together</h2>
+
+        <p>
+          I'm passionate about using technology, creativity, and
+          community-centred solutions to create lasting social impact.
+        </p>
+        <a href="#contact-form" class="cta-button"> Start a Conversation </a>
+      </div>
+    </section>
+
+    <section class="reveal card">
+      <h2>What It's Like Working With Me</h2>
+
+      <div class="working-image">
+        <img
+          src="images/WHAT ITS LIKE WORKING WITH ME.png"
+          alt="Deborah facilitating a community workshop"
+          class="lightbox-trigger"
+        />
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-container">
+        <!-- Footer Brand -->
+
+        <div class="footer-brand">
+          <img
+            src="images/MY PORTFOLIO LOGO.png"
+            alt="Deborah Andanje Logo"
+            class="footer-logo"
+          />
+
+          <h3>Technology. Creativity. Community.</h3>
+
+          <p>
+            Building technology-driven and community-centred solutions that
+            create meaningful and lasting impact.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+
+          <ul>
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="portfolio.html">Projects & Ventures</a></li>
+
+            <li><a href="services.html">Services</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Services -->
+
+        <div class="footer-column">
+          <h3>Services</h3>
+
+          <ul>
+            <li>Project Support</li>
+
+            <li>Creative Design</li>
+
+            <li>Web Development</li>
+
+            <li>Social Impact Consultancy</li>
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+
+        <div class="footer-column">
+          <h3>Connect With Me</h3>
+
+          <ul>
+            <li>
+              <a
+                href="https://linkedin.com/in/deborah-tsimbavasi-4394191a1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-linkedin"></i>
+                LinkedIn
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.instagram.com/datartdesigns?igsh=NXFjNjg1M2liNnNp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-instagram"></i>
+                Instagram</a
+              >
+            </li>
+
+            <li>
+              <a
+                href="https://web.facebook.com/DebraTAndanje"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-facebook"></i>
+                Facebook</a
+              >
+            </li>
+
+            <li>
+              <a href="mailto:deborahandanje@gmail.com">
+                <i class="fa-solid fa-envelope"></i>
+                Email Me</a
+              >
+            </li>
+
+            <li>
+              <a href="tel:+254716695147">
+                <i class="fa-solid fa-phone"></i>
+
+                Call Me
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Copyright -->
+
+      <div class="footer-bottom">
+        <p>
+          © <span id="current-year"></span>
+          DATART DESIGNS | Designed & Developed by Deborah Andanje
+        </p>
+      </div>
+    </footer>
+    <!-- Back to Top Button -->
+
+    <button id="backToTop" aria-label="Back to Top">
+      <title="Back to Top">
+
+     <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+    <!--Image Lightbox-->
+
+    <div id="lightbox" class="lightbox">
+
+     <span class="close-lightbox">&times;</span>
+
+      <img
+        id="lightbox-image"
+        src=""
+        alt="Expanded project image"
+      >
+
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
