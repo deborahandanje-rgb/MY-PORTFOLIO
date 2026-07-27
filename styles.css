@@ -1380,6 +1380,27 @@ margin:auto;
         padding: var(--space-lg) var(--space-sm);
     }
 
+    .project-showcase {
+        padding: 40px 20px;
+        opacity: 1;
+        transform: none;
+        visibility: visible;
+    }
+
+    .project-showcase.reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+    .project-showcase .project-logo {
+        width: 180px;
+        margin: 20px auto;
+    }
+
+    .pillars-grid {
+        gap: 15px;
+    }
+    
     /* About Layout */
 
     .about-layout {
