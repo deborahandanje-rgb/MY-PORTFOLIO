@@ -1,28 +1,20 @@
 # Hi there 👋 I'm Deborah Andanje
 
-Community Development Professional | Web Developer | Creative Designer | Entrepreneur
+Web Developer | Creative Designer | Social Impact Entrepreneur
 
 Building digital solutions that empower communities and create lasting social impact across Africa.
-
-# 🌍 Deborah Andanje | Personal Portfolio
 
 Welcome to my personal portfolio website!
 
 This portfolio showcases my professional journey, projects, services, and passion for using technology, creativity, and community-driven solutions to create meaningful social impact.
 
-## 🔗 Live Website
+🔗 Live Website
 
-> *(Add your live website URL here once deployed)*
+https://my-portfolio-datart.vercel.app/
 
-Example:
+About Me
 
-https://www.deborahandanje.com
-
----
-
-# 👩🏽 About Me
-
-Hello! I'm **Deborah Andanje**, a Community Development Professional, Web Developer, Creative Designer, and Entrepreneur based in Bungoma County, Kenya.
+I'm Deborah Andanje, a Web Developer, Creative Designer, and Social Impact Entrepreneur based in Bungoma County, Kenya.
 
 I enjoy building digital solutions that solve real community challenges while combining creativity, technology, and social innovation.
 
@@ -37,11 +29,11 @@ My work spans:
 
 ---
 
-# 🚀 Featured Projects
+Featured Projects
 
-## 🧡 Sauti Salama
+#JusticeLink Kenya
 
-A community-centred digital platform promoting:
+A community-centered digital platform promoting:
 
 - Legal awareness
 - Survivor support
@@ -49,9 +41,7 @@ A community-centred digital platform promoting:
 - Safety
 - Education
 
----
-
-## 🎨 30Nine Visuals
+#30Nine Visuals
 
 An online creative studio showcasing:
 
@@ -61,9 +51,7 @@ An online creative studio showcasing:
 - Graphic Design
 - Creative Storytelling
 
----
-
-## 🌱 Tsimsaro Investment Ltd
+#Tsimsaro Investment Limited
 
 A sustainable agribusiness enterprise promoting:
 
@@ -74,21 +62,17 @@ A sustainable agribusiness enterprise promoting:
 - Livelihood Development
 
 ---
-
-# 💼 Services
+Services
 
 This website showcases services including:
 
 - Website Development
 - Project Support
 - Creative Design
-- Proposal Writing Support
 - Community Engagement
-- Digital Solutions
 
 ---
-
-# 🛠 Built With
+🛠 Built With
 
 - HTML5
 - CSS3
@@ -96,9 +80,7 @@ This website showcases services including:
 - Font Awesome
 - Google Fonts
 
----
-
-# ✨ Website Features
+✨ Website Features
 
 - Responsive Design
 - Mobile Navigation
@@ -108,20 +90,16 @@ This website showcases services including:
 - Portfolio Gallery
 - Project Filtering
 - Contact Form
-- Copy Email Button
 - Back To Top Button
 - Professional Hero Sections
 
 ---
+📂 Website Structure
 
-# 📂 Website Structure
-
-```
 Portfolio/
 │
 ├── index.html
 ├── about.html
-├── education.html
 ├── services.html
 ├── portfolio.html
 ├── contact.html
@@ -135,11 +113,9 @@ Portfolio/
 ├── images/
 │
 └── README.md
-```
 
 ---
-
-# 📬 Contact Me
+Contact Me
 
 📧 Email
 
@@ -155,7 +131,7 @@ Bungoma County, Kenya
 
 ---
 
-# 🌐 Connect With Me
+Connect With Me
 
 LinkedIn
 
@@ -171,15 +147,14 @@ https://web.facebook.com/DebraTAndanje
 
 ---
 
-# 🎯 Vision
+# Vision
 
 I believe technology should empower communities, strengthen livelihoods, and create opportunities for positive social change.
 
 Every project I undertake is guided by creativity, collaboration, and a commitment to making a lasting impact.
 
----
 
-# 📈 Future Improvements
+# Future Improvements
 
 - Blog section
 - Dark/Light mode
@@ -190,17 +165,13 @@ Every project I undertake is guided by creativity, collaboration, and a commitme
 - Multilingual support
 - Accessibility enhancements
 
----
 
-# 📄 License
+# License
 
 This project is licensed under the MIT License.
 
 Feel free to explore the code, learn from it, and get inspired.
 
----
-
-## ⭐ Thank You
 
 Thank you for visiting my portfolio.
 
