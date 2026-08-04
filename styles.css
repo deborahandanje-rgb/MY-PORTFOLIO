@@ -13,6 +13,7 @@
     --space-sm: 10px;
     --space-md: 20px;
     --space-lg: 40px;
+    --section-padding: 40px;
 
     --space-input: 12px;
     --space-button-y: 14px;
@@ -365,7 +366,7 @@ button {
         rgba(0,0,0,0.45),
         rgba(0,0,0,0.45)
     ),
-    url("images/ABOUT NAVIGATION.png");
+    url("images/CONTACT-GET IN TOUCH SECTION.png");
 
     background-size: cover;
     background-position: center;
@@ -616,7 +617,7 @@ nav a:visited {
     align-items: center;
 
     text-align: center;
-    padding: 100px 2rem;
+    padding: 50px 2rem;
     background-size:cover;
     background-position: center;
     background-color: var(--highlight);
