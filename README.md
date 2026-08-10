@@ -8,10 +8,6 @@ Welcome to my personal portfolio website!
 
 This portfolio showcases my professional journey, projects, services, and passion for using technology, creativity, and community-driven solutions to create meaningful social impact.
 
-🔗 Live Website
-
-https://my-portfolio-datart.vercel.app/
-
 About Me
 
 I'm Deborah Andanje, a Web Developer, Creative Designer, and Social Impact Entrepreneur based in Bungoma County, Kenya.
