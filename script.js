@@ -29,8 +29,6 @@ projectCards.forEach((card) => {
 
   if (!heading) return;
 
-  console.log(heading.textContent);
-
   if (heading.textContent.includes("App")) {
     card.classList.add("highlight");
   }
@@ -134,14 +132,10 @@ if (heroTitle) {
 //Active Navigation Highlight
 const currentPage = window.location.pathname.split("/").pop();
 
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    if(link.getAttribute("href") === currentPage){
-
-        link.classList.add("active");
-
-    }
-
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  if (link.getAttribute("href") === currentPage) {
+    link.classList.add("active");
+  }
 });
 
 /* ==========================================
@@ -150,33 +144,24 @@ document.querySelectorAll(".nav-links a").forEach(link => {
 
 const backToTopButton = document.getElementById("backToTop");
 
-// Show or hide button while scrolling
-window.addEventListener("scroll", () => {
-
+if (backToTopButton) {
+  // Show or hide button while scrolling
+  window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
-
-        backToTopButton.classList.add("show");
-
+      backToTopButton.classList.add("show");
     } else {
-
-        backToTopButton.classList.remove("show");
-
+      backToTopButton.classList.remove("show");
     }
+  });
 
-});
-
-// Scroll smoothly back to the top
-backToTopButton.addEventListener("click", () => {
-
+  // Scroll smoothly back to the top
+  backToTopButton.addEventListener("click", () => {
     window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
+      top: 0,
+      behavior: "smooth",
     });
-
-});
+  });
+}
 
 /* ==========================================
    Animated Statistics Counter
@@ -184,63 +169,50 @@ backToTopButton.addEventListener("click", () => {
 
 const counters = document.querySelectorAll(".counter");
 
+// Time-based counter animation. Use `data-duration` (ms) on `.counter` to override.
 const animateCounters = () => {
+  counters.forEach((counter) => {
+    const target = Number(counter.dataset.target) || 0;
+    const duration = Number(counter.dataset.duration) || 800; // default 800ms (faster)
 
-    counters.forEach(counter => {
+    const startTime = performance.now();
 
-        const target = Number(counter.dataset.target);
+    const step = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const value = Math.floor(progress * target);
 
-        let current = 0;
+      counter.textContent = value;
 
-        const increment = Math.ceil(target / 100);
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        counter.textContent = target + "+";
+      }
+    };
 
-        const updateCounter = () => {
-
-            current += increment;
-
-            if (current < target) {
-
-                counter.textContent = current;
-
-                requestAnimationFrame(updateCounter);
-
-            } else {
-
-                counter.textContent = target + "+";
-
-            }
-
-        };
-
-        updateCounter();
-
-    });
-
+    requestAnimationFrame(step);
+  });
 };
 
 // Run animation only once when section enters the viewport
 const statsSection = document.querySelector(".stats-section");
 
 if (statsSection) {
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounters();
 
-    const observer = new IntersectionObserver((entries, observer) => {
+          observer.unobserve(statsSection);
+        }
+      });
+    },
+    { threshold: 0.4 },
+  );
 
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                animateCounters();
-
-                observer.unobserve(statsSection);
-
-            }
-
-        });
-
-    }, { threshold: 0.4 });
-
-    observer.observe(statsSection);
-
+  observer.observe(statsSection);
 }
 
 /* ==========================================
@@ -255,48 +227,34 @@ const closeLightbox = document.querySelector(".close-lightbox");
 
 const galleryImages = document.querySelectorAll(".lightbox-trigger");
 
-galleryImages.forEach(image => {
+galleryImages.forEach((image) => {
+  image.addEventListener("click", () => {
+    lightbox.classList.add("show");
 
-    image.addEventListener("click", () => {
+    lightboxImage.src = image.src;
 
-        lightbox.classList.add("show");
+    lightboxImage.alt = image.alt;
 
-        lightboxImage.src = image.src;
-
-        lightboxImage.alt = image.alt;
-
-        document.body.style.overflow = "hidden";
-
-    });
-
+    document.body.style.overflow = "hidden";
+  });
 });
 
 if (closeLightbox) {
+  closeLightbox.addEventListener("click", () => {
+    lightbox.classList.remove("show");
 
-    closeLightbox.addEventListener("click", () => {
-
-        lightbox.classList.remove("show");
-
-        document.body.style.overflow = "auto";
-
-    });
-
+    document.body.style.overflow = "auto";
+  });
 }
 
 if (lightbox) {
+  lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+      lightbox.classList.remove("show");
 
-    lightbox.addEventListener("click", (event) => {
-
-        if (event.target === lightbox) {
-
-            lightbox.classList.remove("show");
-
-            document.body.style.overflow = "auto";
-
-        }
-
-    });
-
+      document.body.style.overflow = "auto";
+    }
+  });
 }
 
 /* ==========================================
@@ -304,13 +262,9 @@ if (lightbox) {
 ========================================== */
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox.classList.contains("show")) {
+    lightbox.classList.remove("show");
 
-    if (event.key === "Escape" && lightbox.classList.contains("show")) {
-
-        lightbox.classList.remove("show");
-
-        document.body.style.overflow = "auto";
-
-    }
-
+    document.body.style.overflow = "auto";
+  }
 });
