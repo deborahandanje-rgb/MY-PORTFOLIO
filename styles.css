@@ -122,6 +122,33 @@ color:var(--background);
     box-sizing: border-box;
 }
 
+.hero-buttons a {
+    color: var(--highlight);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    background-color: var(--primary);
+
+} 
+
+.hero-buttons {
+    text-align: center;
+}
+
+.hero-portfolio-content{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    color:var(--highlight);
+
+    padding:2rem;
+}
+
 /* Card Style */
 .card {
     border: 2px solid var(--muted);
