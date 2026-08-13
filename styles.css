@@ -403,7 +403,7 @@ select:focus-visible {
 
 /*Navigation background section*/
 .hero-nav {
-    height: 80vh;
+    height: 200vh;
     background: linear-gradient(
         rgba(21, 2, 86, 0.45),
         rgba(21, 2, 86, 0.45)
@@ -411,7 +411,7 @@ select:focus-visible {
     url("images/CONTACT-GET IN TOUCH SECTION.png");
 
     background-size: cover;
-    background-position: center;
+    background-position: center top;
     background-repeat: no-repeat;
 
     display: flex;
