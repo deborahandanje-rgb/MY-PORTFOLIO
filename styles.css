@@ -1476,7 +1476,12 @@ font-size:1rem;
         width: 100%;
     }
 
-    .hero-nav,
+    .hero-nav {
+        min-height: 60vh;
+        background-size: cover;
+        background-position: center;
+    }
+    
     .services-hero,
     .portfolio-hero,
     .contact-hero,
