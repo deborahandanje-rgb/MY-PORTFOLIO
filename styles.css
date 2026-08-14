@@ -403,7 +403,7 @@ select:focus-visible {
 
 /*Navigation background section*/
 .hero-nav {
-    height: 200vh;
+    height: 150vh;
     background: linear-gradient(
         rgba(21, 2, 86, 0.45),
         rgba(21, 2, 86, 0.45)
