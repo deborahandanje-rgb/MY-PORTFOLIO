@@ -1491,7 +1491,12 @@ font-size:1rem;
         background-size: cover;
         background-position: center;
     }
-
+    
+    .portfolio-hero .reveal{
+        min-height: 45vh;
+        padding: var(--space-md) var(--space-sm);
+    }
+    
     .nav-links li a {
         display: block;
         padding: 14px var(--space-md);
