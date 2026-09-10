@@ -1498,6 +1498,16 @@ font-size:1rem;
         background-size: contain;
         background-position: center;
     }
+
+    /* The desktop-height hero leaves excessive empty space around services content on small screens. */
+    .hero.hero-services {
+        min-height: auto;
+        padding: 3rem var(--space-sm);
+    }
+
+    .services-section {
+        padding-top: var(--space-md);
+    }
     
     .portfolio-hero .reveal{
         min-height: 45vh;
