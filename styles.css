@@ -1478,8 +1478,10 @@ font-size:1rem;
 
     .hero-nav {
         height: auto;
-        min-height: auto;
-        background-size: cover;
+        min-height: 0;
+        /* Match the source artwork so the entire navigation image remains visible. */
+        aspect-ratio: 4 / 5;
+        background-size: contain;
         background-position: center;
     }
 
