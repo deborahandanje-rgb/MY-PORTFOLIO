@@ -504,6 +504,14 @@ select:focus-visible {
 
 }
 
+.portfolio-hero .portfolio-hero-description {
+    max-width: 42rem;
+    margin: 0 auto var(--space-md);
+    padding: 0 var(--space-md);
+    text-align: center;
+    color: var(--highlight);
+}
+
 .portfolio-image{
     width:100%;
     height:220px;
@@ -1495,7 +1503,22 @@ font-size:1rem;
         padding-top: var(--space-md);
     }
 
-    .portfolio-hero,
+    /* Keep the portfolio header artwork fully visible while reducing the
+       oversized gaps around the portfolio introduction on small screens. */
+    .portfolio-hero {
+        min-height: 0;
+        aspect-ratio: 1672 / 941;
+        background-size: contain;
+        background-position: center;
+    }
+
+    .portfolio-hero .portfolio-hero-description {
+        max-width: 32rem;
+        margin-bottom: var(--space-md);
+        padding: 0 var(--space-sm);
+        font-size: 1rem;
+    }
+
     .contact-hero,
     .quote-banner {
         height: auto;
@@ -1522,9 +1545,13 @@ font-size:1rem;
         padding-top: var(--space-md);
     }
     
-    .portfolio-hero .reveal{
-        min-height: 45vh;
-        padding: var(--space-md) var(--space-sm);
+    .hero.hero-portfolio {
+        min-height: auto;
+        padding: 3rem var(--space-sm);
+    }
+
+    .hero.hero-portfolio + .skills-section {
+        padding-top: var(--space-md);
     }
     
     .nav-links li a {
