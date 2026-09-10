@@ -1477,11 +1477,22 @@ font-size:1rem;
     }
 
     .hero-nav {
-        min-height: 60vh;
+        height: auto;
+        min-height: auto;
         background-size: cover;
         background-position: center;
     }
-    
+
+    /* Keep the home-page header and hero content close together on small screens. */
+    .hero.hero-index {
+        min-height: auto;
+        padding: 3rem var(--space-sm);
+    }
+
+    .hero.hero-index + .skills-section {
+        padding-top: var(--space-md);
+    }
+
     .portfolio-hero,
     .contact-hero,
     .quote-banner {
