@@ -69,9 +69,9 @@ color:var(--background);
 
     border-radius: 50%;
 
-    background: var(--highlight);
+    background: var(--dark);
 
-    color: var(--dark);
+    color: var(--highlight);
 
     cursor: pointer;
 
