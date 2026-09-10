@@ -1491,12 +1491,22 @@ font-size:1rem;
         background-position: center;
     }
 
-    /* Preserve the 3:2 source image on narrow screens instead of cropping it. */
+    /* Keep the navigation header compact so it does not create a visual gap before the services hero. */
     .services-hero {
-        min-height: 0;
-        aspect-ratio: 3 / 2;
-        background-size: contain;
+        min-height: auto;
+        aspect-ratio: auto;
+        background-size: cover;
         background-position: center;
+    }
+
+    /* The desktop-height hero leaves excessive empty space around services content on small screens. */
+    .hero.hero-services {
+        min-height: auto;
+        padding: 3rem var(--space-sm);
+    }
+
+    .services-section {
+        padding-top: var(--space-md);
     }
     
     .portfolio-hero .reveal{
