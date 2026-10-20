@@ -405,19 +405,6 @@ select:focus-visible {
 .hero-nav {
     height: auto;
     min-height: 100vh;
-    background: linear-gradient(
-        rgba(21, 2, 86, 0.45),
-        rgba(21, 2, 86, 0.45)
-    ),
-    url("images/DEBORAH PASSPORT PHOTO.png");
-
-    background-size: cover;
-    background-position: center 25%;
-    background-repeat: no-repeat;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 60vh;
 
 }
 .services-hero {
