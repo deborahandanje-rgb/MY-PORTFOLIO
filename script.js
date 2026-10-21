@@ -1,12 +1,25 @@
-//Navigation Menu Toggle
+// Accessible navigation menu toggle
 const navToggle = document.querySelector(".nav-toggle");
 const navLinks = document.querySelector(".nav-links");
 
 if (navToggle && navLinks) {
+  if (!navLinks.id) navLinks.id = "primary-navigation";
+  navToggle.setAttribute("aria-controls", navLinks.id);
+  navToggle.setAttribute("aria-expanded", String(navLinks.classList.contains("open")));
+
   navToggle.addEventListener("click", () => {
-    navLinks.classList.toggle("open");
+    const isOpen = navLinks.classList.toggle("open");
+    navToggle.setAttribute("aria-expanded", String(isOpen));
   });
 }
+
+// Close the mobile menu after a link is clicked and keep its accessibility state in sync
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (navLinks) navLinks.classList.remove("open");
+    if (navToggle) navToggle.setAttribute("aria-expanded", "false");
+  });
+});
 
 // Auto-Updating Year functionality
 const yearSpan = document.querySelector("#current-year");
@@ -14,72 +27,64 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
-// Toggle the Highlight Class
-const heroSection = document.querySelector(".hero");
+// Do not automatically apply the global .highlight style to heroes or cards.
+// This keeps each page's layout and project-card styling intentional.
 
-if (heroSection) {
-  heroSection.classList.toggle("highlight");
-}
-
-// Change Project cards
-const projectCards = document.querySelectorAll(".project-card");
-
-projectCards.forEach((card) => {
-  const heading = card.querySelector("h3");
-
-  if (!heading) return;
-
-  if (heading.textContent.includes("App")) {
-    card.classList.add("highlight");
-  }
-});
-
-//Automatically close the mobile navigation menu when a link is clicked
-const navItems = document.querySelectorAll(".nav-links a");
-
-navItems.forEach((link) => {
-  link.addEventListener("click", () => {
-    console.log("Link clicked");
-
-    navLinks.classList.remove("open");
-  });
-});
-
-// Contact form validation and Formspree submission
-const contactForm = document.querySelector("form");
+// // Contact form validation and Formspree submission
+// Scope this handler to the Formspree form so other forms are not intercepted.
+const contactForm = document.querySelector('form[action^="https://formspree.io/f/"]');
 const feedback = document.querySelector("#form-feedback");
 
-if (contactForm && feedback) {
+if (contactForm) {
   contactForm.addEventListener("submit", async (event) => {
+    // Without the feedback element, allow the browser's normal form submission.
+    if (!feedback) return;
+
     event.preventDefault();
 
-    const name = document.querySelector("#full-name").value.trim();
-    const email = document.querySelector("#email").value.trim();
-    const message = document.querySelector("#message").value.trim();
+    const nameField = contactForm.querySelector("#full-name");
+    const emailField = contactForm.querySelector("#email");
+    const messageField = contactForm.querySelector("#message");
     const submitButton = contactForm.querySelector('button[type="submit"]');
 
     feedback.classList.remove("error", "success");
+    feedback.textContent = "";
+
+    if (!nameField || !emailField || !messageField) {
+      feedback.textContent = "The contact form is temporarily unavailable. Please email me directly.";
+      feedback.classList.add("error");
+      return;
+    }
+
+    const name = nameField.value.trim();
+    const email = emailField.value.trim();
+    const message = messageField.value.trim();
 
     if (!name) {
       feedback.textContent = "Please enter your full name.";
       feedback.classList.add("error");
+      nameField.focus();
       return;
     }
 
     if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       feedback.textContent = "Please enter a valid email address.";
       feedback.classList.add("error");
+      emailField.focus();
       return;
     }
 
     if (!message) {
-      feedback.textContent =
-        "Please tell us how you would like to get involved.";
+      feedback.textContent = "Please enter a message.";
       feedback.classList.add("error");
+      messageField.focus();
       return;
     }
 
-    if (submitButton) submitButton.disabled = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.setAttribute("aria-busy", "true");
+    }
     feedback.textContent = "Sending your message…";
 
     try {
@@ -91,75 +96,60 @@ if (contactForm && feedback) {
 
       if (response.ok) {
         feedback.textContent =
-          "Thank you for your message! It has been submitted successfully.";
+          "Thank you for your message! Formspree accepted your submission. If you need a quick response, you can also email me directly.";
         feedback.classList.add("success");
         contactForm.reset();
       } else {
         let errorMessage = "Your message could not be sent. Please try again.";
         try {
           const result = await response.json();
-          if (result.errors && result.errors.length) {
+          if (Array.isArray(result.errors) && result.errors.length) {
             errorMessage = result.errors.map((error) => error.message).join(" ");
           }
         } catch {
-          // Keep the default error message if the response isn't JSON.
+          // Keep the default error if Formspree does not return JSON.
         }
         feedback.textContent = errorMessage;
         feedback.classList.add("error");
       }
-    } catch (error) {
+    } catch {
       feedback.textContent =
-        "We couldn't send your message due to a connection problem. Please try again.";
+        "We couldn't send your message because of a connection problem. Please try again or email me directly.";
       feedback.classList.add("error");
     } finally {
-      if (submitButton) submitButton.disabled = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.removeAttribute("aria-busy");
+      }
     }
   });
 }
 
-//Scroll Reveal Animation
+// Scroll reveal animation, with fallback and reduced-motion support
 const revealElements = document.querySelectorAll(".reveal");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  },
+if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+  revealElements.forEach((element) => element.classList.add("visible"));
+} else {
+  const revealObserver = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 },
+  );
 
-  {
-    threshold: 0.15,
-  },
-);
-
-revealElements.forEach((element) => {
-  observer.observe(element);
-});
-
-//Hero Heading Animation
-const heroTitle = document.querySelector("#hero-title");
-
-if (heroTitle) {
-  const text = "Deborah Andanje";
-
-  let index = 0;
-
-  function typeText() {
-    if (index < text.length) {
-      heroTitle.textContent += text.charAt(index);
-
-      index++;
-
-      setTimeout(typeText, 100);
-    }
-  }
-
-  typeText();
+  revealElements.forEach((element) => revealObserver.observe(element));
 }
 
-//Active Navigation Highlight
+// // The home-page heading is already present in HTML; avoid appending duplicate text.
+
+// //Active Navigation Highlight
 const currentPage = window.location.pathname.split("/").pop();
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
@@ -198,21 +188,25 @@ if (backToTopButton) {
 ========================================== */
 
 const counters = document.querySelectorAll(".counter");
+let countersAnimated = false;
 
-// Time-based counter animation. Use `data-duration` (ms) on `.counter` to override.
 const animateCounters = () => {
+  if (countersAnimated) return;
+  countersAnimated = true;
+
   counters.forEach((counter) => {
     const target = Number(counter.dataset.target) || 0;
-    const duration = Number(counter.dataset.duration) || 800; // default 800ms (faster)
+    const duration = Number(counter.dataset.duration) || 800;
+
+    if (prefersReducedMotion) {
+      counter.textContent = target + "+";
+      return;
+    }
 
     const startTime = performance.now();
-
     const step = (now) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const value = Math.floor(progress * target);
-
-      counter.textContent = value;
+      const progress = Math.min((now - startTime) / duration, 1);
+      counter.textContent = String(Math.floor(progress * target));
 
       if (progress < 1) {
         requestAnimationFrame(step);
@@ -225,24 +219,26 @@ const animateCounters = () => {
   });
 };
 
-// Run animation only once when section enters the viewport
 const statsSection = document.querySelector(".stats-section");
 
 if (statsSection) {
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateCounters();
+  if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+    animateCounters();
+  } else {
+    const statsObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.4 },
+    );
 
-          observer.unobserve(statsSection);
-        }
-      });
-    },
-    { threshold: 0.4 },
-  );
-
-  observer.observe(statsSection);
+    statsObserver.observe(statsSection);
+  }
 }
 
 /* ==========================================
@@ -250,40 +246,34 @@ if (statsSection) {
 ========================================== */
 
 const lightbox = document.getElementById("lightbox");
-
 const lightboxImage = document.getElementById("lightbox-image");
-
 const closeLightbox = document.querySelector(".close-lightbox");
-
 const galleryImages = document.querySelectorAll(".lightbox-trigger");
+
+const hideLightbox = () => {
+  if (!lightbox) return;
+  lightbox.classList.remove("show");
+  document.body.style.overflow = "";
+};
 
 galleryImages.forEach((image) => {
   image.addEventListener("click", () => {
+    if (!lightbox || !lightboxImage) return;
+
+    lightboxImage.src = image.currentSrc || image.src;
+    lightboxImage.alt = image.alt || "Expanded image";
     lightbox.classList.add("show");
-
-    lightboxImage.src = image.src;
-
-    lightboxImage.alt = image.alt;
-
     document.body.style.overflow = "hidden";
+
+    if (closeLightbox) closeLightbox.focus();
   });
 });
 
-if (closeLightbox) {
-  closeLightbox.addEventListener("click", () => {
-    lightbox.classList.remove("show");
-
-    document.body.style.overflow = "auto";
-  });
-}
+if (closeLightbox) closeLightbox.addEventListener("click", hideLightbox);
 
 if (lightbox) {
   lightbox.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-      lightbox.classList.remove("show");
-
-      document.body.style.overflow = "auto";
-    }
+    if (event.target === lightbox) hideLightbox();
   });
 }
 
@@ -292,6 +282,11 @@ if (lightbox) {
 ========================================== */
 
 document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox && lightbox.classList.contains("show")) {
+    hideLightbox();
+  }
+});
+
   if (event.key === "Escape" && lightbox.classList.contains("show")) {
     lightbox.classList.remove("show");
 
