@@ -286,10 +286,3 @@ document.addEventListener("keydown", (event) => {
     hideLightbox();
   }
 });
-
-  if (event.key === "Escape" && lightbox.classList.contains("show")) {
-    lightbox.classList.remove("show");
-
-    document.body.style.overflow = "auto";
-  }
-});
