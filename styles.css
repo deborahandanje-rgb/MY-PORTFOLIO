@@ -1431,6 +1431,14 @@ font-size:1rem;
   transform: translateY(0);
 }
 
+/* Ensure long project sections are not left invisible on desktop if the
+   scroll-reveal observer does not trigger for the full section height. */
+.project-showcase.reveal {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+}
+
 .reveal p{
     color: var(--muted);
     
