@@ -403,7 +403,6 @@ select:focus-visible {
 
 /*Navigation background section*/
 .hero-nav {
-    height: auto;
     min-height: 100vh;
     background: linear-gradient(
         rgba(21, 2, 86, 0.35),
@@ -412,8 +411,8 @@ select:focus-visible {
     url("images/DEBORAH PASSPORT PHOTO.png");
 
     /* Show the full portrait rather than cropping the face */
-    background-size: contain;
-    background-position: center top;
+    background-size: cover;
+    background-position: center 70%;
     background-repeat: no-repeat;
 
     display: flex;
