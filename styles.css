@@ -408,7 +408,7 @@ select:focus-visible {
         rgba(21, 2, 86, 0.35),
         rgba(21, 2, 86, 0.35)
     ),
-    url("images/DEBORAH PASSPORT PHOTO.png");
+    url("images/DEBORAH PASSPORT PHOTO.webp");
 
     /* Show the full portrait rather than cropping the face */
     background-size: cover;
@@ -424,7 +424,7 @@ select:focus-visible {
         rgba(21, 2, 86, 0.65),
         rgba(21, 2, 86, 0.65)
     ),
-    url("images/MY SERVICES NAVIGATION.png");
+    url("images/MY SERVICES NAVIGATION.webp");
 
     background-size: cover;
     background-position: center;
@@ -461,7 +461,7 @@ select:focus-visible {
         rgba(20, 2, 86, 0.65),
         rgba(20, 2, 86, 0.65)
     ),
-    url("images/GET QUOTE.png");
+    url("images/GET QUOTE.webp");
 
     background-size: cover;
     background-position: center;
@@ -485,7 +485,7 @@ select:focus-visible {
         rgba(20, 2, 86, 0.65),
         rgba(20, 2, 86, 0.65)
     ),
-    url("images/MY PORTFOLIO HERO.png");
+    url("images/MY PORTFOLIO HERO.webp");
 
     background-size: cover;
     background-position: center;
@@ -570,7 +570,7 @@ select:focus-visible {
   overflow: hidden;
   padding: 3rem 2rem;
   border-radius: 20px;
-  background-image: url("images/DEBORAH SITTING AI.png");
+  background-image: url("images/DEBORAH SITTING AI.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
