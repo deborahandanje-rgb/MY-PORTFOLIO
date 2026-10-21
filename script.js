@@ -30,7 +30,7 @@ if (yearSpan) {
 // Do not automatically apply the global .highlight style to heroes or cards.
 // This keeps each page's layout and project-card styling intentional.
 
-// // Contact form validation and Formspree submission
+// Contact form validation and Formspree submission
 // Scope this handler to the Formspree form so other forms are not intercepted.
 const contactForm = document.querySelector('form[action^="https://formspree.io/f/"]');
 const feedback = document.querySelector("#form-feedback");
@@ -147,10 +147,10 @@ if (prefersReducedMotion || !("IntersectionObserver" in window)) {
   revealElements.forEach((element) => revealObserver.observe(element));
 }
 
-// // The home-page heading is already present in HTML; avoid appending duplicate text.
+// The home-page heading is already present in HTML; avoid appending duplicate text.
 
-// //Active Navigation Highlight
-const currentPage = window.location.pathname.split("/").pop();
+// Active navigation highlight; treat the site root as the home page.
+const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
 document.querySelectorAll(".nav-links a").forEach((link) => {
   if (link.getAttribute("href") === currentPage) {
