@@ -497,6 +497,13 @@ select:focus-visible {
     flex-direction: column; 
 }
 
+/* Keep the Projects & Ventures header visible even if the scroll-reveal
+   observer does not activate before the page is painted. */
+.portfolio-hero.reveal {
+    opacity: 1;
+    transform: none;
+}
+
 .portfolio-hero nav {
 
     background: transparent;
