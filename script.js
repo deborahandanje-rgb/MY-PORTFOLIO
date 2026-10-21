@@ -45,45 +45,75 @@ navItems.forEach((link) => {
   });
 });
 
-//Form validation and feedback
+// Contact form validation and Formspree submission
 const contactForm = document.querySelector("form");
 const feedback = document.querySelector("#form-feedback");
 
 if (contactForm && feedback) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const name = document.querySelector("#full-name").value.trim();
     const email = document.querySelector("#email").value.trim();
     const message = document.querySelector("#message").value.trim();
+    const submitButton = contactForm.querySelector('button[type="submit"]');
 
     feedback.classList.remove("error", "success");
 
-    if (name === "") {
+    if (!name) {
       feedback.textContent = "Please enter your full name.";
       feedback.classList.add("error");
       return;
     }
 
-    if (!email.includes("@")) {
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       feedback.textContent = "Please enter a valid email address.";
       feedback.classList.add("error");
       return;
     }
 
-    if (message === "") {
+    if (!message) {
       feedback.textContent =
         "Please tell us how you would like to get involved.";
       feedback.classList.add("error");
       return;
     }
 
-    feedback.textContent =
-      "Thank you for your interest! We will get back to you soon.";
+    if (submitButton) submitButton.disabled = true;
+    feedback.textContent = "Sending your message…";
 
-    feedback.classList.add("success");
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
 
-    contactForm.reset();
+      if (response.ok) {
+        feedback.textContent =
+          "Thank you for your message! It has been submitted successfully.";
+        feedback.classList.add("success");
+        contactForm.reset();
+      } else {
+        let errorMessage = "Your message could not be sent. Please try again.";
+        try {
+          const result = await response.json();
+          if (result.errors && result.errors.length) {
+            errorMessage = result.errors.map((error) => error.message).join(" ");
+          }
+        } catch {
+          // Keep the default error message if the response isn't JSON.
+        }
+        feedback.textContent = errorMessage;
+        feedback.classList.add("error");
+      }
+    } catch (error) {
+      feedback.textContent =
+        "We couldn't send your message due to a connection problem. Please try again.";
+      feedback.classList.add("error");
+    } finally {
+      if (submitButton) submitButton.disabled = false;
+    }
   });
 }
 
