@@ -16,9 +16,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
     <link rel="stylesheet" href="styles.css" />
     <style>
-      /* Contact page: reduce the large gap below the navigation/hero image. */
+      /* Reduce space below the navigation header */
       .contact-hero {
         min-height: 45vh;
+      }
+
+      /* Reduce excess space around the contact introduction */
+      .hero.hero-contact {
+        min-height: auto;
+        padding: 2rem 1.5rem;
+        margin-bottom: 0;
+      }
+
+      /* Remove the extra top spacing before the next card */
+      .hero.hero-contact + section {
+        margin-top: 0;
+        padding-top: 1.25rem;
+      }
+
+      /* Remove extra top padding inside main on this page */
+      main {
+        padding-top: 0;
       }
     </style>
   </head>
